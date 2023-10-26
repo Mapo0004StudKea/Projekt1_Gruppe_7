@@ -1,12 +1,12 @@
 public class Customer {
-    protected int Telefonnr;
-    protected String Navn;
-    protected double BetalingsBalance;
+    int Phonenumber;
+    String navn;
+    double PaymentBalance;
 
-    Customer(int tlfnr, String name, double Balance){
-        Telefonnr=tlfnr;
-        Navn=name;
-        BetalingsBalance=Balance;
+    Customer(int Phone, String name, double Balance){
+        Phonenumber=Phone;
+        navn=name;
+        PaymentBalance=Balance;
     }
 
 }
