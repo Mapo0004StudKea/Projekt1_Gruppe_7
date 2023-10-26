@@ -1,4 +1,4 @@
-public class Customer {
+public class  Customer {
     int Phonenumber;
     String navn;
     double PaymentBalance;
@@ -9,4 +9,20 @@ public class Customer {
         PaymentBalance=Balance;
     }
 
+    void PrintCustom() {
+        System.out.println(this);
+
+    }
+    @Override
+    public String toString() {
+        return  "kundens Telefon nr " + Phonenumber + " kundens navn: " + navn + " kundens balacne " + PaymentBalance;
+    }
+
+    public int getPhoneNumber() {
+        return Phonenumber;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
 }
