@@ -28,6 +28,7 @@ public class HarrysSalonMenu {
                 case 4:
                     break;
                 case 5:
+                    System.out.println(Appointment.listCustomer);
                     break;
                 case 6:
                     break;
