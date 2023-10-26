@@ -1,12 +1,12 @@
 public class Customer {
     protected int Telefonnr;
     protected String Navn;
-    protected double Balance;
+    protected double BetalingsBalance;
 
-    Customer(int tlfnr, String name, double BetalingBalance){
+    Customer(int tlfnr, String name, double Balance){
         Telefonnr=tlfnr;
         Navn=name;
-        Balance=BetalingBalance;
+        BetalingsBalance=Balance;
     }
 
 }
