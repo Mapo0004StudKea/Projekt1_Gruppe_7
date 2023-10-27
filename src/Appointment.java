@@ -34,19 +34,30 @@ public class Appointment {
                                 case 1:
                                         Monday();
                                         break;
+                                case 2:
+                                        Tuesday();
+                                        break;
+                                case 3:
+                                       Wednesday();
+                                       break;
+                                case 4:
+                                        Thursday();
+                                        break;
+                                case 5:
+                                        Friday();
+                                        break;
                                 case 6:
-                                lavBruger();
-                                break;
+                                        lavBruger();
+                                        break;
                         }
 
 
                 }
         }
 
-
         public static void Monday() {
                 Scanner scanner = new Scanner(System.in);
-                Day[] App = new Day[7];
+                Day[] mondayArry = new Day[7];
 /*
                 App[0]=new Day(listCustomer.get(0));
                 App[1]=new Day(listCustomer.get(0));
@@ -59,7 +70,7 @@ public class Appointment {
                 // ArrayList<String> MandagsTidsListe = new ArrayList<>();
 
                 System.out.println("liste over dagen");
-                printDay(App);
+                printDay(mondayArry);
 
                 System.out.println("skriv kundens telefon nr");
 
@@ -75,21 +86,212 @@ public class Appointment {
                 System.out.println("skriv nummer i rækken");
                 int Nr = scanner.nextInt();
 
-                if (Nr >= 0 && Nr < App.length) {
-                        if (App[Nr] == null) // ! betyder at vi tester om dagen er booket.
-                                 {
-                                App[Nr] = new Day(foundCustomer);
+                if (Nr >= 0 && Nr < mondayArry.length) {
+                        if (mondayArry[Nr] == null) // ! betyder at vi tester om dagen er booket.
+                        {
+                                Calendar mondayDate = Calendar.getInstance();
+                                mondayDate.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                                mondayArry[Nr] = new Day(foundCustomer, mondayDate);
                                 System.out.println("Aftale oprettet.");
-                        }else {
+                        } else {
+                                System.out.println("du har valg en nr sommer allerede er booket");
+                        }
+                }
+                printDay(mondayArry);}
+
+        public static void Tuesday(){
+        Scanner scanner = new Scanner(System.in);
+        Day[] tuesdayArry = new Day[7];
+/*
+                App[0]=new Day(listCustomer.get(0));
+                App[1]=new Day(listCustomer.get(0));
+                App[2]=new Day(listCustomer.get(0));
+                App[3]=new Day(listCustomer.get(0));
+                App[4]=new Day(listCustomer.get(0));
+                App[5]=new Day(listCustomer.get(0));
+               App[6]=new Day(listCustomer.get(0));
+*/
+        // ArrayList<String> MandagsTidsListe = new ArrayList<>();
+
+                System.out.println("liste over dagen");
+
+        printDay(tuesdayArry);
+
+                System.out.println("skriv kundens telefon nr");
+
+        int getCustomerPhoneNumber = scanner.nextInt();
+        Customer foundCustomer = findCustomerByPhoneNumber(getCustomerPhoneNumber);
+
+                if(foundCustomer !=null)
+        {
+                foundCustomer.PrintCustom();
+        } else {
+                System.out.println("Kunden blev ikke fundet.");
+        }
+
+                System.out.println("skriv nummer i rækken");
+        int Nr = scanner.nextInt();
+
+                if(Nr >=0&&Nr<tuesdayArry.length) {
+                if (tuesdayArry[Nr] == null) // ! betyder at vi tester om dagen er booket.
+                {
+                        Calendar tuesdayDate = Calendar.getInstance();
+                        tuesdayDate.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                        tuesdayArry[Nr] = new Day(foundCustomer, tuesdayDate);
+                        System.out.println("Aftale oprettet.");
+                } else {
+                        System.out.println("du har valg en nr sommer allerede er booket");
+                }
+        }
+
+
+
+        printDay(tuesdayArry);
+}
+        public static void Wednesday(){
+                Scanner scanner = new Scanner(System.in);
+                Day[] wednesdayArry = new Day[7];
+/*
+                App[0]=new Day(listCustomer.get(0));
+                App[1]=new Day(listCustomer.get(0));
+                App[2]=new Day(listCustomer.get(0));
+                App[3]=new Day(listCustomer.get(0));
+                App[4]=new Day(listCustomer.get(0));
+                App[5]=new Day(listCustomer.get(0));
+               App[6]=new Day(listCustomer.get(0));
+*/
+                // ArrayList<String> MandagsTidsListe = new ArrayList<>();
+
+                System.out.println("liste over dagen");
+
+                printDay(wednesdayArry);
+
+                System.out.println("skriv kundens telefon nr");
+
+                int getCustomerPhoneNumber = scanner.nextInt();
+                Customer foundCustomer = findCustomerByPhoneNumber(getCustomerPhoneNumber);
+
+                if(foundCustomer !=null)
+
+                {
+                        foundCustomer.PrintCustom();
+                } else
+                {
+                        System.out.println("Kunden blev ikke fundet.");
+                }
+
+                System.out.println("skriv nummer i rækken");
+                int Nr = scanner.nextInt();
+
+                if(Nr >=0&&Nr<wednesdayArry.length) {
+                        if (wednesdayArry[Nr] == null) // ! betyder at vi tester om dagen er booket.
+                        {
+                                Calendar wednesdayDate = Calendar.getInstance();
+                                wednesdayDate.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                                wednesdayArry[Nr] = new Day(foundCustomer, wednesdayDate);
+                                System.out.println("Aftale oprettet.");
+                        } else {
+                                System.out.println("du har valg en nr sommer allerede er booket");
+                        }
+                }
+                printDay(wednesdayArry);}
+
+        public static void Thursday(){
+                Scanner scanner = new Scanner(System.in);
+                Day[] thursdayArry = new Day[7];
+/*
+                App[0]=new Day(listCustomer.get(0));
+                App[1]=new Day(listCustomer.get(0));
+                App[2]=new Day(listCustomer.get(0));
+                App[3]=new Day(listCustomer.get(0));
+                App[4]=new Day(listCustomer.get(0));
+                App[5]=new Day(listCustomer.get(0));
+               App[6]=new Day(listCustomer.get(0));
+*/
+                // ArrayList<String> MandagsTidsListe = new ArrayList<>();
+
+                System.out.println("liste over dagen");
+
+                printDay(thursdayArry);
+
+                System.out.println("skriv kundens telefon nr");
+
+                int getCustomerPhoneNumber = scanner.nextInt();
+                Customer foundCustomer = findCustomerByPhoneNumber(getCustomerPhoneNumber);
+
+                if(foundCustomer !=null) {
+                        foundCustomer.PrintCustom();
+                } else
+
+                {
+                        System.out.println("Kunden blev ikke fundet.");
+                }
+
+                System.out.println("skriv nummer i rækken");
+                int Nr = scanner.nextInt();
+
+                if(Nr >=0&&Nr<thursdayArry.length) {
+                        if (thursdayArry[Nr] == null) // ! betyder at vi tester om dagen er booket.
+                        {
+                                Calendar thursdayDate = Calendar.getInstance();
+                                thursdayDate.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                                thursdayArry[Nr] = new Day(foundCustomer, thursdayDate);
+                                System.out.println("Aftale oprettet.");
+                        } else {
                                 System.out.println("du har valg en nr sommer allerede er booket");
                         }
                 }
 
-               // App[Nr] = new Day("Booket");
+                // App[Nr] = new Day("Booket");
 
-                printDay(App);
+                printDay(thursdayArry);
 
         }
+        public static void Friday(){
+                Scanner scanner = new Scanner(System.in);
+                Day[] fridayArry = new Day[7];
+/*
+                App[0]=new Day(listCustomer.get(0));
+                App[1]=new Day(listCustomer.get(0));
+                App[2]=new Day(listCustomer.get(0));
+                App[3]=new Day(listCustomer.get(0));
+                App[4]=new Day(listCustomer.get(0));
+                App[5]=new Day(listCustomer.get(0));
+               App[6]=new Day(listCustomer.get(0));
+*/
+                // ArrayList<String> MandagsTidsListe = new ArrayList<>();
+
+                System.out.println("liste over dagen");
+
+                printDay(fridayArry);
+
+                System.out.println("skriv kundens telefon nr");
+
+                int getCustomerPhoneNumber = scanner.nextInt();
+                Customer foundCustomer = findCustomerByPhoneNumber(getCustomerPhoneNumber);
+
+                if(foundCustomer !=null) {
+                        foundCustomer.PrintCustom();
+                } else {
+                        System.out.println("Kunden blev ikke fundet.");
+                }
+
+                System.out.println("skriv nummer i rækken");
+                int Nr = scanner.nextInt();
+
+                if(Nr >=0&&Nr<fridayArry.length) {
+                        if (fridayArry[Nr] == null) // ! betyder at vi tester om dagen er booket.
+                        {
+                        Calendar fridayDate = Calendar.getInstance();
+                        fridayDate.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                        fridayArry[Nr] = new Day(foundCustomer, fridayDate);
+                        System.out.println("Aftale oprettet.");
+                        } else {
+                                System.out.println("du har valg en nr sommer allerede er booket");
+                        }
+                }
+                printDay(fridayArry);}
+
         static void printDay(Day[] team) {
                 for (int i = 0; i < team.length; i++)
                         System.out.println(team[i]);
@@ -101,7 +303,7 @@ public class Appointment {
                                 return customer;
                         }
                 }
-                return null; // Returnerer null, hvis kunden ikke blev fundet
+                return null;
         }
 
 
@@ -127,9 +329,11 @@ public class Appointment {
 
 class Day {
          Customer customer;
+         Calendar date;
 
-         public Day(Customer customer) {
+         public Day(Customer customer, Calendar date) {
                  this.customer = customer;
+                 this.date = date;
          }
 
         public boolean isBooked() {
@@ -143,7 +347,7 @@ class Day {
          @Override
          public String toString() {
                  if (customer != null) {
-                         return customer.getNavn() + " (" + customer.getPhoneNumber() + ")";
+                         return customer.getNavn() + " " + customer.getPhoneNumber() + " dato = " + date.getTime();
                  } else {
                          return "Ledig tid";
                  }
