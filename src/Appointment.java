@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
  *
- * Appointment class to create, delete/cancel and display/view appointments.
+ * Info: Appointment class to create, delete/cancel and display/view appointments.
  */
 public class Appointment {
         public static List<String> appointments;

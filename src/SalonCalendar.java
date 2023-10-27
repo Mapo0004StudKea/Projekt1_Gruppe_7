@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
  *
- * calendar class to handle timeslot and some parts of the appointment.
+ * Info: calendar class to handle timeslot and some parts of the appointment.
  */
 
 public class SalonCalendar {

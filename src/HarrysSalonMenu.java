@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
  *
- * main menu class.
+ * Info: main menu class.
  */
 public class HarrysSalonMenu {
     public static void main(String[] args) {
