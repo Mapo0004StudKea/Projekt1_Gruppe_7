@@ -2,6 +2,11 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * @author Martin Poulsen, mapo0004@stud.kea.dk
+ *
+ * main menu class.
+ */
 public class HarrysSalonMenu {
     public static void main(String[] args) {
         SalonCalendar salonCalendar = new SalonCalendar();
@@ -16,6 +21,7 @@ public class HarrysSalonMenu {
             switch (choice) {
                 case 1:
                     Appointment.createAppointment(salonCalendar, customers, scanner);
+
                     break;
 
                 case 2:
@@ -57,7 +63,6 @@ public class HarrysSalonMenu {
     }
 
     public static String selectTimeSlot(Scanner scanner) {
-        System.out.println("Select a day:");
         System.out.println("1. Monday");
         System.out.println("2. Tuesday");
         System.out.println("3. Wednesday");

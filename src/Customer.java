@@ -1,6 +1,12 @@
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author Martin Poulsen, mapo0004@stud.kea.dk
+ *
+ * Customer class to select, add and create customer.
+ */
+
 public class Customer {
     private String name;
     private String phoneNumber;

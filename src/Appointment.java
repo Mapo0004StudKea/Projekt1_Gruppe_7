@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * @author Martin Poulsen, mapo0004@stud.kea.dk
+ *
+ * Appointment class to create, delete/cancel and display/view appointments.
+ */
 public class Appointment {
         public static List<String> appointments;
-
-        public static void createAppointment(String date, String details) {
-                appointments.add(date + " - " + details);
-        }
 
         public static void deleteAppointment(String appointment) {
                 appointments.remove(appointment);
@@ -38,13 +38,22 @@ public class Appointment {
 
                 if (customers.isEmpty() && Customer.createCustomerOption(scanner)) {
                         Customer.addCustomer(customers, scanner);
+                        int customerNumber = Customer.selectCustomer(scanner, customers);
+                        if (customerNumber != -1) {
+                                Customer selectedCustomer = customers.get(customerNumber);
+                                String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
+                                SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
+                                System.out.println("Appointment created for " + selectedTimeSlot);
+                        } else {
+                                System.out.println("Invalid customer selection.");
+                        }
                 } else if (!customers.isEmpty()) {
                         int customerNumber = Customer.selectCustomer(scanner, customers);
 
                         if (customerNumber != -1) {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
-                                createAppointment(selectedTimeSlot, appointmentInfo);
+                                SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                                 System.out.println("Appointment created for " + selectedTimeSlot);
                         } else {
                                 System.out.println("Invalid customer selection.");
