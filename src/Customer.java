@@ -79,11 +79,18 @@ public class Customer {
     void NeedToPay(double amount) {
         transektions.add(new transektion("owes", amount, balance));
         balance = balance + amount;
+
     }
 
     void HasPaid(double amount) {
         transektions.add(new transektion("paid", amount, balance));
         balance = balance - amount;
+        ArrayList<Double> list = new ArrayList<>();
+        //lav en ekstra arry list som gemmer amount, som man så kan regne samme seneer.
+        double amountPaid=0;
+        double regnUd = amount + amountPaid;
+        System.out.println(amountPaid);
+        list.add(amountPaid);
     }
     void printTransektions(){
         System.out.println(this);

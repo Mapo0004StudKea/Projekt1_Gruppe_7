@@ -16,6 +16,7 @@ public class HarrysSalonMenu {
         customers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
+
         while (true) {
             displayMenu();
             int choice = scanner.nextInt();
@@ -162,11 +163,15 @@ public class HarrysSalonMenu {
                     break;
 
                 case 3:
-                    for (int i = 0; i < customers.size(); i++)
+                    double hej = 0;
+                    for (int i = 0; i < customers.size(); i++) {
                         System.out.println(customers.get(i).getBalance());
+                        System.out.println();
+                    }
                     break;
 
                 case 4:
+                    System.out.println(Customer.);
 
             }
         }
