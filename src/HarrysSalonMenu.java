@@ -8,11 +8,12 @@ import java.util.ArrayList;
  * Info: main menu class.
  */
 public class HarrysSalonMenu {
+    private static List<Customer> customers;
     Customer cus = new Customer("sebastian", "22263888");
 
     public static void main(String[] args) {
         SalonCalendar salonCalendar = new SalonCalendar();
-        List<Customer> customers = new ArrayList<>();
+        customers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -39,10 +40,11 @@ public class HarrysSalonMenu {
                 case 5:
                     Customer.viewCustomers(customers);
                     break;
-                case 7:
-
-
                 case 6:
+                    regnskab();
+                    break;
+
+                case 7:
                     System.out.println("Exiting the program.");
                     scanner.close();
                     System.exit(0);
@@ -60,7 +62,8 @@ public class HarrysSalonMenu {
         System.out.println("3. View Appointments");
         System.out.println("4. Add Customer");
         System.out.println("5. View Customers");
-        System.out.println("6. Exit");
+        System.out.println("6. regnskab");
+        System.out.println("7. Exit");
         System.out.print("Please enter your choice: ");
     }
 
@@ -118,6 +121,56 @@ public class HarrysSalonMenu {
         return day + " " + timeSlots[timeSlotChoice - 1];
     }
 
+    public static void regnskab(){
+        Scanner scanner =new Scanner(System.in);
+        boolean shutUp = true;
 
+        while (shutUp) {
+
+            System.out.println("1. customer pays");
+            System.out.println("2. what do the customer ows");
+            System.out.println("3. tjek kundernes balacne");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    // Scanner scanner = new Scanner(System.in);
+                    System.out.println("choice customer");
+                    int customerNumber = Customer.selectCustomer(scanner, customers);
+                    System.out.println("how much do the customer pay");
+                    double paying = scanner.nextDouble();
+
+                    customers.get(customerNumber).HasPaid(paying);
+                    System.out.println("new balacne");
+                    customers.get(customerNumber);
+                    customers.get(customerNumber).printTransektions();
+                    System.out.println();
+                    break;
+                case 2:
+                    System.out.println("choice customer");
+                    int customerNumber1 = Customer.selectCustomer(scanner, customers);
+                    System.out.println("hvor meget skal betale");
+                    double mænge = scanner.nextDouble();
+
+                    customers.get(customerNumber1).NeedToPay(mænge);
+                    System.out.println("new balance");
+                    customers.get(customerNumber1);
+                    customers.get(customerNumber1).printTransektions();
+                    System.out.println();
+                    break;
+
+                case 3:
+                    for (int i = 0; i < customers.size(); i++)
+                        System.out.println(customers.get(i).getBalance());
+                    break;
+
+                case 4:
+
+            }
+        }
+
+    }
 
 }
