@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,10 +12,14 @@ import java.util.Scanner;
 public class Customer {
     private String name;
     private String phoneNumber;
+    private double balance;
+    protected ArrayList<transektion> transektions = new ArrayList<>();
+
 
     public Customer(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.balance = balance;
     }
 
     public String getName() {
@@ -41,6 +47,7 @@ public class Customer {
         scanner.nextLine(); // Consume the newline character
 
         return (customerNumber < 1 || customerNumber > customers.size()) ? -1 : customerNumber - 1;
+
     }
 
     public static void addCustomer(List<Customer> customers, Scanner scanner) {
@@ -59,4 +66,45 @@ public class Customer {
             System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber());
         }
     }
+
+    void NeedToPay(double amount) {
+        transektions.add(new transektion("indsæt", amount, balance));
+        balance = balance + amount;
+    }
+
+    void HasPaid(double amount) {
+        transektions.add(new transektion("hævet", amount, balance));
+        balance = balance - amount;
+    }
+    void printTransektions(){
+        System.out.println(this);
+        System.out.println("text"+"\t"+"dato"+"\t"+"saldo");
+        for ( transektion t : transektions){
+            System.out.println(t);
+        }
+        System.out.println();
+    }
 }
+
+
+class transektion {
+    String text;
+    LocalDate date;
+    double amount;
+    double newBalacen;
+
+    transektion(String text, double amount, double newBalacen) {
+        this.text = text;
+        this.amount = amount;
+        this.newBalacen = newBalacen;
+        date = LocalDate.now();
+    }
+
+    @Override
+    public String toString() {
+        return text + "\t" + date + "\t" + amount + "\t" + newBalacen;
+
+    }
+}
+
+

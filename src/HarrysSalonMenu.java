@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * Info: main menu class.
  */
 public class HarrysSalonMenu {
+    Customer cus = new Customer("sebastian", "22263888");
+
     public static void main(String[] args) {
         SalonCalendar salonCalendar = new SalonCalendar();
         List<Customer> customers = new ArrayList<>();
@@ -21,9 +23,7 @@ public class HarrysSalonMenu {
             switch (choice) {
                 case 1:
                     Appointment.createAppointment(salonCalendar, customers, scanner);
-
                     break;
-
                 case 2:
                     Appointment.cancelAppointment(scanner);
                     break;
@@ -39,6 +39,8 @@ public class HarrysSalonMenu {
                 case 5:
                     Customer.viewCustomers(customers);
                     break;
+                case 7:
+
 
                 case 6:
                     System.out.println("Exiting the program.");
@@ -115,5 +117,7 @@ public class HarrysSalonMenu {
 
         return day + " " + timeSlots[timeSlotChoice - 1];
     }
+
+
 
 }

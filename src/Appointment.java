@@ -39,7 +39,8 @@ public class Appointment {
                 if (customers.isEmpty() && Customer.createCustomerOption(scanner)) {
                         Customer.addCustomer(customers, scanner);
                         int customerNumber = Customer.selectCustomer(scanner, customers);
-                        if (customerNumber != -1) {
+                        if (customerNumber != -1)
+                                 {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
                                 SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
@@ -50,7 +51,8 @@ public class Appointment {
                 } else if (!customers.isEmpty()) {
                         int customerNumber = Customer.selectCustomer(scanner, customers);
 
-                        if (customerNumber != -1) {
+                        if (customerNumber != -1)
+                        {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
                                 SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
@@ -61,6 +63,19 @@ public class Appointment {
                 } else {
                         System.out.println("Appointment creation canceled.");
                 }
+                //økonomi class??
+                System.out.println("vægl kunde");
+                int findCustomor = scanner.nextInt();
+                customers.get(findCustomor);
+                System.out.println("hvor meget skal betale");
+                double mænge = scanner.nextDouble();
+
+                customers.get(findCustomor).NeedToPay(mænge);
+                System.out.println("din nye balance");
+                customers.get(findCustomor);
+                customers.get(findCustomor).printTransektions();
+                System.out.println();
+
         }
 
         public static String enterAppointmentDetails(Scanner scanner) {
@@ -99,3 +114,5 @@ public class Appointment {
                 displayAllAppointments();
         }
 }
+
+

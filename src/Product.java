@@ -1,7 +1,7 @@
 
 public class Product {
 
-    private int cut = 300;
+    private double cut = 300;
     private double shampoo = 100;
     private double scissor = 50;
     private double hairwax = 59.99;
@@ -13,7 +13,7 @@ public class Product {
         this.hairwax = hairwax;
     }
 
-    public int getCut() {
+    public double getCut() {
         return cut;
     }
     public double shampooAndCut() {
@@ -26,14 +26,14 @@ public class Product {
         return hairwax + cut;
     }
     public static void diaplayCutValue() {
-        System.out.println("Hair cut Price"+getCut);
+        //System.out.println("Hair cut Price"+ getCut);
     }
     public static void main(String[] args) {
-        Product p = new Product();
-        System.out.println(p.shampooAndCut());
-        System.out.println(p.scissorAndCut());
-        System.out.println(p.hairwaxAndCut());
-        System.out.println(p.getCut());
+       // Product p = new Product();
+       // System.out.println(p.shampooAndCut());
+        //System.out.println(p.scissorAndCut());
+        //System.out.println(p.hairwaxAndCut());
+       // System.out.println(p.getCut());
 
     }
 }
