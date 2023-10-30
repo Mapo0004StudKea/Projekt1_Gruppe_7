@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
- *
+ * @author sebastian
  * Info: Customer class to select, add and create customer.
  */
 
@@ -28,6 +28,15 @@ public class Customer {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    @Override
+    public String toString() {
+        return "name " + getName() + " number "+ getPhoneNumber();
     }
 
     public static boolean createCustomerOption(Scanner scanner) {
@@ -63,22 +72,22 @@ public class Customer {
         System.out.println("Customers:");
         for (int i = 0; i < customers.size(); i++) {
             Customer customer = customers.get(i);
-            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber());
+            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber()+" balacne " +customer.balance);
         }
     }
 
     void NeedToPay(double amount) {
-        transektions.add(new transektion("indsæt", amount, balance));
+        transektions.add(new transektion("owes", amount, balance));
         balance = balance + amount;
     }
 
     void HasPaid(double amount) {
-        transektions.add(new transektion("hævet", amount, balance));
+        transektions.add(new transektion("paid", amount, balance));
         balance = balance - amount;
     }
     void printTransektions(){
         System.out.println(this);
-        System.out.println("text"+"\t"+"dato"+"\t"+"saldo");
+        System.out.println("text"+"\t"+"dato"+"\t"+"owes");
         for ( transektion t : transektions){
             System.out.println(t);
         }
@@ -86,12 +95,12 @@ public class Customer {
     }
 }
 
-
 class transektion {
     String text;
     LocalDate date;
     double amount;
     double newBalacen;
+    protected ArrayList<transektion> transektions = new ArrayList<>();
 
     transektion(String text, double amount, double newBalacen) {
         this.text = text;

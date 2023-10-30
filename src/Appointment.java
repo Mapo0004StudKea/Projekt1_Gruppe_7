@@ -65,15 +65,14 @@ public class Appointment {
                 }
                 //økonomi class??
                 System.out.println("vægl kunde");
-                int findCustomor = scanner.nextInt();
-                customers.get(findCustomor);
+                int customerNumber = Customer.selectCustomer(scanner, customers);
                 System.out.println("hvor meget skal betale");
                 double mænge = scanner.nextDouble();
 
-                customers.get(findCustomor).NeedToPay(mænge);
+                customers.get(customerNumber).NeedToPay(mænge);
                 System.out.println("din nye balance");
-                customers.get(findCustomor);
-                customers.get(findCustomor).printTransektions();
+                customers.get(customerNumber);
+                customers.get(customerNumber).printTransektions();
                 System.out.println();
 
         }
