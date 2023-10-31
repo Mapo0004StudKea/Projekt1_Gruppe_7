@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class HarrysSalonMenu {
     private static List<Customer> customers;
-    Customer cus = new Customer("sebastian", "22263888");
+    //Customer cus = new Customer("sebastian", "22263888");
 
     public static void main(String[] args) {
         SalonCalendar salonCalendar = new SalonCalendar();
@@ -29,28 +29,23 @@ public class HarrysSalonMenu {
                 case 2:
                     Appointment.cancelAppointment(scanner);
                     break;
-
                 case 3:
                     Appointment.viewAppointments();
                     break;
-
                 case 4:
                     Customer.addCustomer(customers, scanner);
                     break;
-
                 case 5:
                     Customer.viewCustomers(customers);
                     break;
                 case 6:
-                    regnskab();
+                    Accounting(scanner);
                     break;
-
                 case 7:
                     System.out.println("Exiting the program.");
                     scanner.close();
                     System.exit(0);
                     break;
-
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
@@ -67,7 +62,6 @@ public class HarrysSalonMenu {
         System.out.println("7. Exit");
         System.out.print("Please enter your choice: ");
     }
-
     public static String selectTimeSlot(Scanner scanner) {
         System.out.println("1. Monday");
         System.out.println("2. Tuesday");
@@ -81,7 +75,6 @@ public class HarrysSalonMenu {
         if (dayChoice < 1 || dayChoice > 5) {
             return null;
         }
-
         System.out.println("Select a time slot:");
         System.out.println("1. 10:00 AM - 11:00 AM");
         System.out.println("2. 11:00 AM - 12:00 PM");
@@ -121,61 +114,75 @@ public class HarrysSalonMenu {
 
         return day + " " + timeSlots[timeSlotChoice - 1];
     }
-
-    public static void regnskab(){
-        Scanner scanner =new Scanner(System.in);
-        boolean shutUp = true;
-
-        while (shutUp) {
-
-            System.out.println("1. customer pays");
-            System.out.println("2. what do the customer ows");
-            System.out.println("3. tjek kundernes balacne");
-
+    public static void Accounting(Scanner scanner){
+        boolean shutUp = false;
+        double totalPaid = 0;
+        while (!shutUp) {
+            System.out.println("1. Enter an amount the customer owes.");
+            System.out.println("2: Enter an amount the customer has paid.");
+            System.out.println("3. Check the customers balance.");
+            System.out.println("4. View total balance");
+            System.out.println("5. Exit to main menu");
             int choice = scanner.nextInt();
-
             switch (choice) {
 
                 case 1:
-                    // Scanner scanner = new Scanner(System.in);
-                    System.out.println("choice customer");
-                    int customerNumber = Customer.selectCustomer(scanner, customers);
-                    System.out.println("how much do the customer pay");
-                    double paying = scanner.nextDouble();
-
-                    customers.get(customerNumber).HasPaid(paying);
-                    System.out.println("new balacne");
-                    customers.get(customerNumber);
-                    customers.get(customerNumber).printTransektions();
-                    System.out.println();
-                    break;
-                case 2:
-                    System.out.println("choice customer");
+                    System.out.println("choose a customer");
                     int customerNumber1 = Customer.selectCustomer(scanner, customers);
-                    System.out.println("hvor meget skal betale");
-                    double mænge = scanner.nextDouble();
+                    System.out.println("How much does the customer need to pay: ");
+                    double maengde = scanner.nextDouble();
 
-                    customers.get(customerNumber1).NeedToPay(mænge);
-                    System.out.println("new balance");
+                    customers.get(customerNumber1).NeedToPay(maengde);
+                    System.out.println("The new balance is: ");
                     customers.get(customerNumber1);
                     customers.get(customerNumber1).printTransektions();
                     System.out.println();
-                    break;
 
+                    break;
+                case 2:
+                    /*
+                    // Scanner scanner = new Scanner(System.in);
+                    System.out.println("choose a customer: ");
+                    int customerNumber = Customer.selectCustomer(scanner, customers);
+                    System.out.println("how much did the customer pay");
+                    double paying = scanner.nextDouble();
+
+                    customers.get(customerNumber).HasPaid(paying);
+                    System.out.println("The new balance is: ");
+                    customers.get(customerNumber);
+                    customers.get(customerNumber).printTransektions();
+                    System.out.println();
+
+                     */
+                    System.out.println("Choose a customer: ");
+                    int customerNumber = Customer.selectCustomer(scanner, customers);
+                    System.out.println("How much did the customer pay: ");
+                    double paying = scanner.nextDouble();
+                    customers.get(customerNumber).HasPaid(paying);
+                    totalPaid += paying; // Update the total paid
+                    System.out.println("The new total amount paid is: " + totalPaid);
+                    System.out.println();
+                    break;
                 case 3:
-                    double hej = 0;
+                    //henter balancen for kunden
+                    //double hej = 0;
                     for (int i = 0; i < customers.size(); i++) {
+                        System.out.println("The customers balance is: ");
                         System.out.println(customers.get(i).getBalance());
-                        System.out.println();
                     }
                     break;
-
                 case 4:
-                    System.out.println(Customer.);
+                    //View total balance
+                    System.out.println("Total amount paid by all customers: " + totalPaid);
 
+                    break;
+                case 5:
+                    System.out.println("Exiting to main menu");
+                    shutUp = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
             }
         }
-
     }
-
 }

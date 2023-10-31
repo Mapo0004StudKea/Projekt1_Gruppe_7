@@ -40,7 +40,7 @@ public class Appointment {
                         Customer.addCustomer(customers, scanner);
                         int customerNumber = Customer.selectCustomer(scanner, customers);
                         if (customerNumber != -1)
-                                 {
+                        {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
                                 SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
@@ -63,6 +63,7 @@ public class Appointment {
                 } else {
                         System.out.println("Appointment creation canceled.");
                 }
+                /*
                 //økonomi class??
                 System.out.println("vægl kunde");
                 int customerNumber = Customer.selectCustomer(scanner, customers);
@@ -74,6 +75,8 @@ public class Appointment {
                 customers.get(customerNumber);
                 customers.get(customerNumber).printTransektions();
                 System.out.println();
+
+                 */
 
         }
 
@@ -113,5 +116,3 @@ public class Appointment {
                 displayAllAppointments();
         }
 }
-
-
