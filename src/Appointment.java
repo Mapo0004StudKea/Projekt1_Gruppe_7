@@ -16,6 +16,7 @@ public class Appointment {
                 return new ArrayList<>(Appointment.appointments);
         }
 
+        //Hvad fanden sker der? er det ikke det samme som ovenover?
         public static void displayAllAppointments() {
                 for (String appointment : Appointment.appointments) {
                         System.out.println(appointment);
@@ -84,7 +85,7 @@ public class Appointment {
                 System.out.print("Enter appointment details: ");
                 return scanner.nextLine();
         }
-
+                //Hvad er forskellen på den her og deleteAppointment?
         public static void cancelAppointment(Scanner scanner) {
                 List<String> appointments = getAllAppointments();
 

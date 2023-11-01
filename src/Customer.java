@@ -53,7 +53,7 @@ public class Customer {
         }
         System.out.print("Enter the customer number: ");
         int customerNumber = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Consume the newline character
 
         return (customerNumber < 1 || customerNumber > customers.size()) ? -1 : customerNumber - 1;
 
@@ -72,7 +72,7 @@ public class Customer {
         System.out.println("Customers:");
         for (int i = 0; i < customers.size(); i++) {
             Customer customer = customers.get(i);
-            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber()+" balance " +customer.balance);
+            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber()+" balacne " +customer.balance);
         }
     }
 
@@ -122,3 +122,5 @@ class transektion {
 
     }
 }
+
+

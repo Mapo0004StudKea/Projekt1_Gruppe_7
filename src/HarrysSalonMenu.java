@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
- *
+ * @author viktorrasmussen, vira0004@stud.kea.dk
  * Info: main menu class.
  */
 public class HarrysSalonMenu {
@@ -39,7 +39,11 @@ public class HarrysSalonMenu {
                     Customer.viewCustomers(customers);
                     break;
                 case 6:
-                    Accounting(scanner);
+                    if (Password.password()) {
+
+
+                        Accounting(scanner);
+                    }
                     break;
                 case 7:
                     System.out.println("Exiting the program.");
