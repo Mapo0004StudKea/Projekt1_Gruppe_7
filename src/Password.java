@@ -23,7 +23,7 @@ public class Password {
 
                 } else if (a.equals("b")) {
                     System.out.println("Farvel");
-                    return  false;
+                    return false;
 
                 } else {
                     System.out.println("Forkert password");
