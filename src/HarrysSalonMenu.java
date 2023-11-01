@@ -115,64 +115,66 @@ public class HarrysSalonMenu {
     public static void Accounting(Scanner scanner){
         boolean shutUp = false;
         double totalPaid = 0;
-        String passwordToEnter = "hairyharry";
-        System.out.println("Enter password: ");
-        String enteredPassword = scanner.nextLine();
+        //String passwordToEnter = "hairyharry";
+        //System.out.println("Enter password: ");
+        //String enteredPassword = scanner.nextLine();
+        while (!shutUp) {
+            System.out.println("1. Enter an amount the customer owes.");
+            System.out.println("2: Enter an amount the customer has paid.");
+            System.out.println("3. Check the customers balance.");
+            System.out.println("4. View total balance");
+            System.out.println("5. Exit to main menu");
+            int choice = scanner.nextInt();
+            switch (choice) {
 
-        if (passwordToEnter.equals(enteredPassword)) {
-            while (!shutUp) {
-                System.out.println("1. Enter an amount the customer owes.");
-                System.out.println("2: Enter an amount the customer has paid.");
-                System.out.println("3. Check the customers balance.");
-                System.out.println("4. View total balance");
-                System.out.println("5. Exit to main menu");
-                int choice = scanner.nextInt();
-                switch (choice) {
+                case 1:
+                    System.out.println("choose a customer");
+                    int customerNumber1 = Customer.selectCustomer(scanner, customers);
+                    System.out.println("How much does the customer need to pay: ");
+                    double maengde = scanner.nextDouble();
 
-                    case 1:
-                        System.out.println("choose a customer");
-                        int customerNumber1 = Customer.selectCustomer(scanner, customers);
-                        System.out.println("How much does the customer need to pay: ");
-                        double maengde = scanner.nextDouble();
+                    customers.get(customerNumber1).customerNeedToPay(maengde);
+                    System.out.println("The new balance is: ");
+                    customers.get(customerNumber1);
+                    customers.get(customerNumber1).printCustomerTransactions();
+                    System.out.println();
+                    break;
+                case 2:
+                    System.out.println("Choose a customer: ");
+                    int customerNumber = Customer.selectCustomer(scanner, customers);
+                    System.out.println("How much did the customer pay: ");
+                    double paying = scanner.nextDouble();
+                    customers.get(customerNumber).customerHasPaid(paying);
+                    totalPaid += paying; // Update the total paid
+                    System.out.println("The new total amount paid is: " + totalPaid);
+                    System.out.println();
+                    break;
+                case 3:
+                    //henter balancen for kunden
+                    for (int i = 0; i < customers.size(); i++) {
+                        System.out.println("The customers balance is: ");
+                        System.out.println(customers.get(i).getBalance());
+                    }
+                    break;
+                case 4:
+                    //View total balance
+                    System.out.println("Total amount paid by all customers: " + totalPaid);
 
-                        customers.get(customerNumber1).customerNeedToPay(maengde);
-                        System.out.println("The new balance is: ");
-                        customers.get(customerNumber1);
-                        customers.get(customerNumber1).printCustomerTransactions();
-                        System.out.println();
-                        break;
-                    case 2:
-                        System.out.println("Choose a customer: ");
-                        int customerNumber = Customer.selectCustomer(scanner, customers);
-                        System.out.println("How much did the customer pay: ");
-                        double paying = scanner.nextDouble();
-                        customers.get(customerNumber).customerHasPaid(paying);
-                        totalPaid += paying; // Update the total paid
-                        System.out.println("The new total amount paid is: " + totalPaid);
-                        System.out.println();
-                        break;
-                    case 3:
-                        //henter balancen for kunden
-                        for (int i = 0; i < customers.size(); i++) {
-                            System.out.println("The customers balance is: ");
-                            System.out.println(customers.get(i).getBalance());
-                        }
-                        break;
-                    case 4:
-                        //View total balance
-                        System.out.println("Total amount paid by all customers: " + totalPaid);
-
-                        break;
-                    case 5:
-                        System.out.println("Exiting to main menu");
-                        shutUp = true;
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please enter a valid option.");
-                }
+                    break;
+                case 5:
+                    System.out.println("Exiting to main menu");
+                    shutUp = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
             }
+        }
+        /*
+        if (passwordToEnter.equals(enteredPassword)) {
+
         } else {
             System.out.println("Wrong password, Try again!");
         }
+         */
     }
 }
