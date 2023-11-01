@@ -3,7 +3,8 @@ import java.util.List;
 import java.util.Scanner;
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
- *
+ * @author Sebastian Holger Drumm, sedr0001@stud.kea.dk
+ * @author Viktor Rasmussen, Vira0004@stud.kea.dk
  * Info: Appointment class to create, delete/cancel and display/view appointments.
  */
 public class Appointment {
@@ -64,21 +65,6 @@ public class Appointment {
                 } else {
                         System.out.println("Appointment creation canceled.");
                 }
-                /*
-                //økonomi class??
-                System.out.println("vægl kunde");
-                int customerNumber = Customer.selectCustomer(scanner, customers);
-                System.out.println("hvor meget skal betale");
-                double mænge = scanner.nextDouble();
-
-                customers.get(customerNumber).NeedToPay(mænge);
-                System.out.println("din nye balance");
-                customers.get(customerNumber);
-                customers.get(customerNumber).printTransektions();
-                System.out.println();
-
-                 */
-
         }
 
         public static String enterAppointmentDetails(Scanner scanner) {

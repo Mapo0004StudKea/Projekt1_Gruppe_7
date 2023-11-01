@@ -4,18 +4,16 @@ import java.util.ArrayList;
 
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
- * @author viktorrasmussen, vira0004@stud.kea.dk
+ * @author Sebastian Holger Drumm, sedr0001@stud.kea.dk
+ * @author Viktor Rasmussen, Vira0004@stud.kea.dk
  * Info: main menu class.
  */
 public class HarrysSalonMenu {
     private static List<Customer> customers;
-    //Customer cus = new Customer("sebastian", "22263888");
-
     public static void main(String[] args) {
         SalonCalendar salonCalendar = new SalonCalendar();
         customers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-
 
         while (true) {
             displayMenu();
@@ -24,26 +22,22 @@ public class HarrysSalonMenu {
 
             switch (choice) {
                 case 1:
-                    Appointment.createAppointment(salonCalendar, customers, scanner);
-                    break;
-                case 2:
-                    Appointment.cancelAppointment(scanner);
-                    break;
-                case 3:
-                    Appointment.viewAppointments();
-                    break;
-                case 4:
                     Customer.addCustomer(customers, scanner);
                     break;
-                case 5:
+                case 2:
                     Customer.viewCustomers(customers);
                     break;
+                case 3:
+                    Appointment.createAppointment(salonCalendar, customers, scanner);
+                    break;
+                case 4:
+                    Appointment.viewAppointments();
+                    break;
+                case 5:
+                    Appointment.cancelAppointment(scanner);
+                    break;
                 case 6:
-                    if (Password.password()) {
-
-
-                        Accounting(scanner);
-                    }
+                    Accounting(scanner);
                     break;
                 case 7:
                     System.out.println("Exiting the program.");
@@ -57,12 +51,12 @@ public class HarrysSalonMenu {
     }
     private static void displayMenu() {
         System.out.println("\nSalon Calendar Menu:");
-        System.out.println("1. Create Appointment");
-        System.out.println("2. Cancel Appointment");
-        System.out.println("3. View Appointments");
-        System.out.println("4. Add Customer");
-        System.out.println("5. View Customers");
-        System.out.println("6. regnskab");
+        System.out.println("1. Add Customer");
+        System.out.println("2. View Customer");
+        System.out.println("3. Create Appointment");
+        System.out.println("4. View Appointments");
+        System.out.println("5. Cancel Appointment");
+        System.out.println("6. Accounting");
         System.out.println("7. Exit");
         System.out.print("Please enter your choice: ");
     }
@@ -121,6 +115,9 @@ public class HarrysSalonMenu {
     public static void Accounting(Scanner scanner){
         boolean shutUp = false;
         double totalPaid = 0;
+        //String passwordToEnter = "hairyharry";
+        //System.out.println("Enter password: ");
+        //String enteredPassword = scanner.nextLine();
         while (!shutUp) {
             System.out.println("1. Enter an amount the customer owes.");
             System.out.println("2: Enter an amount the customer has paid.");
@@ -136,40 +133,24 @@ public class HarrysSalonMenu {
                     System.out.println("How much does the customer need to pay: ");
                     double maengde = scanner.nextDouble();
 
-                    customers.get(customerNumber1).NeedToPay(maengde);
+                    customers.get(customerNumber1).customerNeedToPay(maengde);
                     System.out.println("The new balance is: ");
                     customers.get(customerNumber1);
-                    customers.get(customerNumber1).printTransektions();
+                    customers.get(customerNumber1).printCustomerTransactions();
                     System.out.println();
-
                     break;
                 case 2:
-                    /*
-                    // Scanner scanner = new Scanner(System.in);
-                    System.out.println("choose a customer: ");
-                    int customerNumber = Customer.selectCustomer(scanner, customers);
-                    System.out.println("how much did the customer pay");
-                    double paying = scanner.nextDouble();
-
-                    customers.get(customerNumber).HasPaid(paying);
-                    System.out.println("The new balance is: ");
-                    customers.get(customerNumber);
-                    customers.get(customerNumber).printTransektions();
-                    System.out.println();
-
-                     */
                     System.out.println("Choose a customer: ");
                     int customerNumber = Customer.selectCustomer(scanner, customers);
                     System.out.println("How much did the customer pay: ");
                     double paying = scanner.nextDouble();
-                    customers.get(customerNumber).HasPaid(paying);
+                    customers.get(customerNumber).customerHasPaid(paying);
                     totalPaid += paying; // Update the total paid
                     System.out.println("The new total amount paid is: " + totalPaid);
                     System.out.println();
                     break;
                 case 3:
                     //henter balancen for kunden
-                    //double hej = 0;
                     for (int i = 0; i < customers.size(); i++) {
                         System.out.println("The customers balance is: ");
                         System.out.println(customers.get(i).getBalance());
@@ -188,5 +169,12 @@ public class HarrysSalonMenu {
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
         }
+        /*
+        if (passwordToEnter.equals(enteredPassword)) {
+
+        } else {
+            System.out.println("Wrong password, Try again!");
+        }
+         */
     }
 }
