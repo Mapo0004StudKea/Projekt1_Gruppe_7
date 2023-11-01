@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class Customer {
     private final String name;
     private final String phoneNumber;
-    private double balance;
-    protected ArrayList<Transaction> transactions = new ArrayList<>();
+    private static double balance;
+    protected static ArrayList<Transaction> transactions = new ArrayList<>();
 
 
     public Customer(String name, String phoneNumber) {
@@ -74,7 +74,7 @@ public class Customer {
         }
     }
 
-    public void customerNeedToPay(double amount) {
+    public static void customerNeedToPay(double amount) {
         transactions.add(new Transaction("owes", amount, balance));
         balance = balance + amount;
     }

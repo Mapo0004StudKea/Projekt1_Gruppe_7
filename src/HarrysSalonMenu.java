@@ -10,11 +10,16 @@ import java.util.ArrayList;
  */
 public class HarrysSalonMenu {
     private static List<Customer> customers;
+    private static List<Product> products;
 
     public static void main(String[] args) {
         SalonCalendar salonCalendar = new SalonCalendar();
         customers = new ArrayList<>();
+        products = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        //Product cut = new Product("cut", 400);
+        Customer newCustomer = new Customer("Viktor", "52222222");
+        customers.add(newCustomer);
 
         while (true) {
             displayMenu();
@@ -161,7 +166,7 @@ public class HarrysSalonMenu {
                         //henter balancen for kunden
                         for (int i = 0; i < customers.size(); i++) {
                             System.out.println("The customers balance is: ");
-                            System.out.println(customers.get(i).getBalance());
+                            System.out.println(customers.get(i).getName() + customers.get(i).getBalance());
                         }
                         break;
                     case 4:
@@ -172,6 +177,7 @@ public class HarrysSalonMenu {
                     case 5:
                         System.out.println("Exiting to main menu");
                         shutUp = true;
+
                         break;
                     default:
                         System.out.println("Invalid choice. Please enter a valid option.");

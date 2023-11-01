@@ -25,6 +25,7 @@ public class Appointment {
         }
         public static void createAppointment(SalonCalendar salonCalendar, List<Customer> customers, Scanner scanner) {
                 String selectedTimeSlot = HarrysSalonMenu.selectTimeSlot(scanner);
+                Product cut = new Product("cut", 400);
 
                 if (selectedTimeSlot == null) {
                         System.out.println("Invalid day or time slot selection.");
@@ -44,7 +45,7 @@ public class Appointment {
                         if (customerNumber != -1)
                         {
                                 Customer selectedCustomer = customers.get(customerNumber);
-                                String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
+                                String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details + cut;
                                 SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                                 System.out.println("Appointment created for " + selectedTimeSlot);
                         } else {
@@ -57,6 +58,7 @@ public class Appointment {
                         {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
+                                Customer.customerNeedToPay(cut.getPrice());
                                 SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                                 System.out.println("Appointment created for " + selectedTimeSlot);
                         } else {
