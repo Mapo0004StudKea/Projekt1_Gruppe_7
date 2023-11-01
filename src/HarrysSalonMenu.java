@@ -135,26 +135,24 @@ public class HarrysSalonMenu {
                         System.out.println("How much does the customer need to pay: ");
                         double maengde = scanner.nextDouble();
 
-                        customers.get(customerNumber1).NeedToPay(maengde);
+                        customers.get(customerNumber1).customerNeedToPay(maengde);
                         System.out.println("The new balance is: ");
                         customers.get(customerNumber1);
-                        customers.get(customerNumber1).printTransektions();
+                        customers.get(customerNumber1).printCustomerTransactions();
                         System.out.println();
-
                         break;
                     case 2:
                         System.out.println("Choose a customer: ");
                         int customerNumber = Customer.selectCustomer(scanner, customers);
                         System.out.println("How much did the customer pay: ");
                         double paying = scanner.nextDouble();
-                        customers.get(customerNumber).HasPaid(paying);
+                        customers.get(customerNumber).customerHasPaid(paying);
                         totalPaid += paying; // Update the total paid
                         System.out.println("The new total amount paid is: " + totalPaid);
                         System.out.println();
                         break;
                     case 3:
                         //henter balancen for kunden
-                        //double hej = 0;
                         for (int i = 0; i < customers.size(); i++) {
                             System.out.println("The customers balance is: ");
                             System.out.println(customers.get(i).getBalance());
@@ -176,6 +174,5 @@ public class HarrysSalonMenu {
         } else {
             System.out.println("Wrong password, Try again!");
         }
-
     }
 }

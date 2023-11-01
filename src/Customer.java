@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,16 +10,15 @@ import java.util.Scanner;
  */
 
 public class Customer {
-    private String name;
-    private String phoneNumber;
+    private final String name;
+    private final String phoneNumber;
     private double balance;
-    protected ArrayList<Transaction> transektions = new ArrayList<>();
+    protected ArrayList<Transaction> transactions = new ArrayList<>();
 
 
     public Customer(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.balance = balance;
     }
 
     public String getName() {
@@ -57,7 +55,6 @@ public class Customer {
         scanner.nextLine();
 
         return (customerNumber < 1 || customerNumber > customers.size()) ? -1 : customerNumber - 1;
-
     }
 
     public static void addCustomer(List<Customer> customers, Scanner scanner) {
@@ -77,49 +74,27 @@ public class Customer {
         }
     }
 
-    void NeedToPay(double amount) {
-        transektions.add(new Transaction("owes", amount, balance));
+    public void customerNeedToPay(double amount) {
+        transactions.add(new Transaction("owes", amount, balance));
         balance = balance + amount;
-
     }
 
-    void HasPaid(double amount) {
-        transektions.add(new Transaction("paid", amount, balance));
+    public void customerHasPaid(double amount) {
+        transactions.add(new Transaction("paid", amount, balance));
         balance = balance - amount;
         ArrayList<Double> list = new ArrayList<>();
-        //lav en ekstra arry list som gemmer amount, som man så kan regne samme seneer.
+        //lav en ekstra array list som gemmer amount, som man så kan regne samme senere.
         double amountPaid=0;
-        double regnUd = amount + amountPaid;
         System.out.println(amountPaid);
         list.add(amountPaid);
     }
-    void printTransektions(){
+
+    public void printCustomerTransactions(){
         System.out.println(this);
         System.out.println("text"+"\t"+"dato"+"\t"+"owes");
-        for ( Transaction t : transektions){
+        for ( Transaction t : transactions){
             System.out.println(t);
         }
         System.out.println();
-    }
-}
-
-class Transaction {
-    String text;
-    LocalDate date;
-    double amount;
-    double newBalacen;
-    protected ArrayList<Transaction> transactions = new ArrayList<>();
-
-    Transaction(String text, double amount, double newBalacen) {
-        this.text = text;
-        this.amount = amount;
-        this.newBalacen = newBalacen;
-        date = LocalDate.now();
-    }
-
-    @Override
-    public String toString() {
-        return text + "\t" + date + "\t" + amount + "\t" + newBalacen;
-
     }
 }
