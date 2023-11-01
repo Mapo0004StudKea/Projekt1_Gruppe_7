@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 /**
  * @author Martin Poulsen, mapo0004@stud.kea.dk
- * @author sebastian
+ * @author Sebastian Holger Drumm, sedr0001@stud.kea.dk
+ * @author Viktor Rasmussen, Vira0004@stud.kea.dk
  * Info: Customer class to select, add and create customer.
  */
 
@@ -13,7 +14,7 @@ public class Customer {
     private String name;
     private String phoneNumber;
     private double balance;
-    protected ArrayList<transektion> transektions = new ArrayList<>();
+    protected ArrayList<Transaction> transektions = new ArrayList<>();
 
 
     public Customer(String name, String phoneNumber) {
@@ -77,13 +78,13 @@ public class Customer {
     }
 
     void NeedToPay(double amount) {
-        transektions.add(new transektion("owes", amount, balance));
+        transektions.add(new Transaction("owes", amount, balance));
         balance = balance + amount;
 
     }
 
     void HasPaid(double amount) {
-        transektions.add(new transektion("paid", amount, balance));
+        transektions.add(new Transaction("paid", amount, balance));
         balance = balance - amount;
         ArrayList<Double> list = new ArrayList<>();
         //lav en ekstra arry list som gemmer amount, som man så kan regne samme seneer.
@@ -95,21 +96,21 @@ public class Customer {
     void printTransektions(){
         System.out.println(this);
         System.out.println("text"+"\t"+"dato"+"\t"+"owes");
-        for ( transektion t : transektions){
+        for ( Transaction t : transektions){
             System.out.println(t);
         }
         System.out.println();
     }
 }
 
-class transektion {
+class Transaction {
     String text;
     LocalDate date;
     double amount;
     double newBalacen;
-    protected ArrayList<transektion> transektions = new ArrayList<>();
+    protected ArrayList<Transaction> transactions = new ArrayList<>();
 
-    transektion(String text, double amount, double newBalacen) {
+    Transaction(String text, double amount, double newBalacen) {
         this.text = text;
         this.amount = amount;
         this.newBalacen = newBalacen;
