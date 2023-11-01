@@ -1,5 +1,8 @@
 import java.util.Scanner;
-
+/**
+ * @author Viktor Rasmussen, Vira0004@stud.kea.dk
+ * Info: Customer class to select, add and create customer.
+ */
 public class Password {
         static String passwords;
         static String a;
