@@ -54,7 +54,7 @@ public class HarrysSalonMenu {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Du kan du desværre ikke. Prøv igen ved at kigge på menuen og se, hvad du gerne må trykke.");
+                    System.out.println("Error: invalid choice.");
                     break;
             }
         }

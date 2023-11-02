@@ -23,7 +23,7 @@ public class Appointment {
         Product cut = new Product("cut", 400);
 
         if (selectedTimeSlot == null) {
-            System.out.println("Du kan du desværre ikke. Prøv igen ved at kigge på menuen og se, hvad du gerne må trykke.");
+            System.out.println("Error: invalid choice.");
             return;
         }
 

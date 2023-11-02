@@ -50,7 +50,7 @@ public class Customer {
             scanner.nextLine();
 
             if (customerNumber < 1 || customerNumber > customers.size()) {
-                System.out.println(" Det kan du desværre ikke. Vælg i mellem  1 and " + customers.size() + ".");
+                System.out.println(" Error: invalid choice. Choose between  1 and " + customers.size() + ".");
             }
         } while (customerNumber < 1 || customerNumber > customers.size());
 
