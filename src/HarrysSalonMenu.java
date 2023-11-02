@@ -1,10 +1,9 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
 public class HarrysSalonMenu {
-    private static List<Customer> customers;
+    static List<Customer> customers;
     private static List<Product> products;
 
     public static void main(String[] args) {
@@ -13,6 +12,7 @@ public class HarrysSalonMenu {
         products = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         //Product cut = new Product("cut", 400);
+
         Customer newCustomer = new Customer("Viktor", "52222222");
         Customer newCustomer2 = new Customer("Sebastian", "20503010");
         Customer newCustomer3 = new Customer("Tunahan", "30604020");
@@ -22,45 +22,41 @@ public class HarrysSalonMenu {
         customers.add(newCustomer3);customers.add(newCustomer4);
         customers.add(newCustomer5);
 
+
         while (true) {
             displayMenu();
-            try {
-                int choice = scanner.nextInt();
-                scanner.nextLine();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
-                switch (choice) {
-                    case 1:
-                        Customer.addCustomer(customers, scanner);
-                        break;
-                    case 2:
-                        Customer.viewCustomers(customers);
-                        break;
-                    case 3:
-                        Appointment.createAppointment(appointmentCalendar, customers, scanner);
-                        break;
-                    case 4:
-                        Appointment.viewAppointments();
-                        break;
-                    case 5:
-                        Appointment.cancelAppointment(scanner);
-                        break;
-                    case 6:
-                        if (Password.password()){
-                            Accounting(scanner);
-                        }
-                        break;
-                    case 7:
-                        System.out.println("Exiting the program.");
-                        scanner.close();
-                        System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Error: invalid choice.");
-                        break;
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Error: Please enter a valid integer choice.");
-                scanner.nextLine(); // Clear the invalid input from the scanner
+            switch (choice) {
+                case 1:
+                    Customer.addCustomer(customers, scanner);
+                    break;
+                case 2:
+                    Customer.viewCustomers(customers);
+                    break;
+                case 3:
+                    Appointment.createAppointment(appointmentCalendar, customers, scanner);
+                    break;
+                case 4:
+                    Appointment.viewAppointments();
+                    break;
+                case 5:
+                    Appointment.cancelAppointment(scanner);
+                    break;
+                case 6:
+                    if (Password.password()){
+                        Accounting(scanner);
+                    }
+                    break;
+                case 7:
+                    System.out.println("Exiting the program.");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Error: invalid choice.");
+                    break;
             }
         }
     }

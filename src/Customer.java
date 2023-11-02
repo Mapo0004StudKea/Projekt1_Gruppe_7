@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Customer {
     private final String name;
     private final String phoneNumber;
-    private double balance;
+    private static double balance;
     protected static ArrayList<Transaction> transactions = new ArrayList<>();
 
 
@@ -35,7 +35,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "name " + getName() + " number " + getPhoneNumber();
+        return "name " + getName() + " number "+ getPhoneNumber();
     }
 
     public static boolean createCustomerOption(Scanner scanner) {
@@ -46,23 +46,17 @@ public class Customer {
     }
 
     public static int selectCustomer(Scanner scanner, List<Customer> customers) {
+        Customer c2 = new Customer("tino", "2015315");
+        customers.add(c2);
         System.out.println("Select a customer:");
         for (int i = 0; i < customers.size(); i++) {
             System.out.println((i + 1) + ". " + customers.get(i).getName());
         }
+        System.out.print("Enter the customer number: ");
+        int customerNumber = scanner.nextInt();
+        scanner.nextLine();
 
-        int customerNumber;
-        do {
-            System.out.print("Enter the customer number: ");
-            customerNumber = scanner.nextInt();
-            scanner.nextLine();
-
-            if (customerNumber < 1 || customerNumber > customers.size()) {
-                System.out.println(" Error: invalid choice. Choose between  1 and " + customers.size() + ".");
-            }
-        } while (customerNumber < 1 || customerNumber > customers.size());
-
-        return customerNumber - 1;
+        return (customerNumber < 1 || customerNumber > customers.size()) ? -1 : customerNumber - 1;
     }
 
     public static void addCustomer(List<Customer> customers, Scanner scanner) {
@@ -78,11 +72,11 @@ public class Customer {
         System.out.println("Customers:");
         for (int i = 0; i < customers.size(); i++) {
             Customer customer = customers.get(i);
-            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber() + " balance " + customer.balance);
+            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber()+" balance " +customer.balance);
         }
     }
 
-    public void customerNeedToPay(double amount) {
+    public static void customerNeedToPay(double amount) {
         transactions.add(new Transaction("owes", amount, balance));
         balance = balance + amount;
     }
@@ -92,15 +86,15 @@ public class Customer {
         balance = balance - amount;
         ArrayList<Double> list = new ArrayList<>();
         //lav en ekstra array list som gemmer amount, som man så kan regne samme senere.
-        double amountPaid = 0;
+        double amountPaid=0;
         System.out.println(amountPaid);
         list.add(amountPaid);
     }
 
-    public void printCustomerTransactions() {
+    public void printCustomerTransactions(){
         System.out.println(this);
-        System.out.println("text" + "\t" + "dato" + "\t" + "owes");
-        for (Transaction t : transactions) {
+        System.out.println("text"+"\t"+"dato"+"\t"+"owes");
+        for ( Transaction t : transactions){
             System.out.println(t);
         }
         System.out.println();
