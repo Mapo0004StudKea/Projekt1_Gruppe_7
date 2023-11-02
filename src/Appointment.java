@@ -70,7 +70,6 @@ public class Appointment {
     //Hvad er forskellen på den her og deleteAppointment?
     public static void cancelAppointment(Scanner scanner) {
         List<String> appointments = getAllAppointments();
-
         if (appointments.isEmpty()) {
             System.out.println("No appointments available to cancel.");
             return;
