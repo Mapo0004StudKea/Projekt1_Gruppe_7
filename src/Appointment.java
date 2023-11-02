@@ -23,7 +23,7 @@ public class Appointment {
                         System.out.println(appointment);
                 }
         }
-        public static void createAppointment(SalonCalendar salonCalendar, List<Customer> customers, Scanner scanner) {
+        public static void createAppointment(AppointmentCalendar appointmentCalendar, List<Customer> customers, Scanner scanner) {
                 String selectedTimeSlot = HarrysSalonMenu.selectTimeSlot(scanner);
                 Product cut = new Product("cut", 400);
 
@@ -32,7 +32,7 @@ public class Appointment {
                         return;
                 }
 
-                if (salonCalendar.isTimeSlotOccupied(selectedTimeSlot)) {
+                if (appointmentCalendar.isTimeSlotOccupied(selectedTimeSlot)) {
                         System.out.println("The selected timeslot is already occupied.");
                         return;
                 }
@@ -46,7 +46,7 @@ public class Appointment {
                         {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details + cut;
-                                SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
+                                AppointmentCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                                 System.out.println("Appointment created for " + selectedTimeSlot);
                         } else {
                                 System.out.println("Invalid customer selection.");
@@ -59,7 +59,7 @@ public class Appointment {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
                                 Customer.customerNeedToPay(cut.getPrice());
-                                SalonCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
+                                AppointmentCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                                 System.out.println("Appointment created for " + selectedTimeSlot);
                         } else {
                                 System.out.println("Invalid customer selection.");

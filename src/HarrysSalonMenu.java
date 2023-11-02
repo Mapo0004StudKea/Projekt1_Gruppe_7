@@ -13,13 +13,19 @@ public class HarrysSalonMenu {
     private static List<Product> products;
 
     public static void main(String[] args) {
-        SalonCalendar salonCalendar = new SalonCalendar();
+        AppointmentCalendar appointmentCalendar = new AppointmentCalendar();
         customers = new ArrayList<>();
         products = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         //Product cut = new Product("cut", 400);
         Customer newCustomer = new Customer("Viktor", "52222222");
-        customers.add(newCustomer);
+        Customer newCustomer2 = new Customer("Sebastian", "20503010");
+        Customer newCustomer3 = new Customer("Tunahan", "30604020");
+        Customer newCustomer4 = new Customer("Lauritz", " 40705030");
+        Customer newCustomer5 = new Customer("Martin", "50806040");
+        customers.add(newCustomer);customers.add(newCustomer2);
+        customers.add(newCustomer3);customers.add(newCustomer4);
+        customers.add(newCustomer5);
 
         while (true) {
             displayMenu();
@@ -34,7 +40,7 @@ public class HarrysSalonMenu {
                     Customer.viewCustomers(customers);
                     break;
                 case 3:
-                    Appointment.createAppointment(salonCalendar, customers, scanner);
+                    Appointment.createAppointment(appointmentCalendar, customers, scanner);
                     break;
                 case 4:
                     Appointment.viewAppointments();

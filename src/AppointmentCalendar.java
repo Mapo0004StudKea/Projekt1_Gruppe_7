@@ -7,9 +7,9 @@ import java.util.ArrayList;
  * Info: calendar class to handle timeslot and some parts of the appointment.
  */
 
-public class SalonCalendar {
+public class AppointmentCalendar {
 
-    public SalonCalendar() {
+    public AppointmentCalendar() {
         Appointment.appointments = new ArrayList<>();
     }
 
