@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Product {
     private static List<Customer> customers;
-    private static List<Product> products;
+    private List<Product> products;
 
     Scanner scanner = new Scanner(System.in);
     String name;
@@ -20,7 +20,6 @@ public class Product {
     public String toString() {
         return name + " " + price;
     }
-
     public static void main(String[] args) {
         customers = new ArrayList<>();
         Customer newCustomer = new Customer("Viktor", "52222222");
@@ -32,16 +31,11 @@ public class Product {
         customers.add(newCustomer3);customers.add(newCustomer4);
         customers.add(newCustomer5);
         Scanner scanner = new Scanner(System.in);
-        makeProduct(scanner);
-        register(customers);
-        selectProduct(scanner);
-
-
-
+     //   makeProduct(scanner);
+        // register(customers);
     }
 
-    public static void makeProduct(Scanner scanner) {
-        products = new ArrayList<Product>();
+    public void makeProduct(Scanner scanner) {
         System.out.println("Skriv produktets navn: ");
         String name = scanner.nextLine();
         System.out.println("Indtast hvad produktet koster");
@@ -56,7 +50,7 @@ public class Product {
             System.out.println(products.get(i).getName() + " " + products.get(i).getPrice());
         }
     }
-    public static int selectProduct(Scanner scanner) {
+    public int selectProduct(Scanner scanner) {
         System.out.println("Select a prodcuct:");
         for (int i = 0; i < products.size(); i++) {
             System.out.println((i + 1) + ". " + products.get(i).getName());
@@ -64,43 +58,6 @@ public class Product {
         int ProductName = scanner.nextInt();
         scanner.nextLine();
         return (ProductName < 1 || ProductName > products.size()) ? -1 : ProductName - 1;
-    }
-
-    public static void register(List<Customer> customers) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("vælg et product");
-        if (products == null) {
-            makeProduct(scanner);
-        }
-        System.out.println("Select a customer:");
-        for (int i = 0; i < customers.size(); i++) {
-            System.out.println((i + 1) + ". " + customers.get(i).getName());
-        }
-        System.out.print("Enter the customer number: ");
-        int customerNumber = scanner.nextInt();
-        scanner.nextLine();
-
-        Customer.customerNeedToPay(products.get(selectProduct(scanner)).getPrice());
-
-        /*
-        for (int i = 1; i < products.size(); i++) {
-            System.out.println(products.get(i).name);
-
-            System.out.println("vælg kunde, som skal havde product");
-            for (int e = 1; e < customers.size(); e++) {
-                System.out.println(customers.get(e - 1));
-            }
-
-            int væglNummerIArrylist = scanner.nextInt();
-            customers.get(væglNummerIArrylist);
-
-            int customerNumber = Customer.selectCustomer(scanner, customers);
-            Customer.customerNeedToPay(products.get(væglNummerIArrylist).getPrice() + customers.get(customerNumber).getBalance());
-          }
-         */
-
-
     }
 
     public String getName() {

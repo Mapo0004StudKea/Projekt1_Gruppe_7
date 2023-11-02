@@ -5,12 +5,11 @@ import java.util.ArrayList;
 
 public class HarrysSalonMenu {
     static List<Customer> customers;
-    private static List<Product> products;
+    private List<Product> products;
 
     public static void main(String[] args) {
         AppointmentCalendar appointmentCalendar = new AppointmentCalendar();
         customers = new ArrayList<>();
-        products = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         //Product cut = new Product("cut", 400);
 
@@ -55,6 +54,9 @@ public class HarrysSalonMenu {
                         System.out.println("Exiting the program.");
                         scanner.close();
                         System.exit(0);
+                        break;
+                    case 8:
+                        Customer.register(customers," ",0 );
                         break;
                     default:
                         System.out.println("Error: invalid choice.");

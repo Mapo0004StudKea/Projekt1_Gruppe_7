@@ -58,7 +58,7 @@ public class Appointment {
                         {
                                 Customer selectedCustomer = customers.get(customerNumber);
                                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
-                                Customer.customerNeedToPay(cut.getPrice());
+
                                 appointmentCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                                 System.out.println("Appointment created for " + selectedTimeSlot);
                         } else {

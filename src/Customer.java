@@ -12,8 +12,9 @@ import java.util.Scanner;
 public class Customer {
     private final String name;
     private final String phoneNumber;
-    private static double balance;
+    private double balance;
     protected static ArrayList<Transaction> transactions = new ArrayList<>();
+    static ArrayList <Product> products  = new ArrayList<Product>();
 
 
     public Customer(String name, String phoneNumber) {
@@ -76,7 +77,7 @@ public class Customer {
         }
     }
 
-    public static void customerNeedToPay(double amount) {
+    public void customerNeedToPay(double amount) {
         transactions.add(new Transaction("owes", amount, balance));
         balance = balance + amount;
     }
@@ -98,5 +99,45 @@ public class Customer {
             System.out.println(t);
         }
         System.out.println();
+    }
+
+    public static void register(List<Customer> customers, String name, double price) {
+        Product getProduct = new Product(name, price);
+
+        Scanner scanner = new Scanner(System.in);
+        getProduct.makeProduct(scanner);
+
+        System.out.println("vælg et product");
+        if (products == null) {
+            getProduct.selectProduct( scanner);
+        }
+        System.out.println("Select a customer:");
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println((i + 1) + ". " + customers.get(i).getName());
+        }
+        System.out.print("Enter the customer number: ");
+        int customerNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        customerNeedToPay(products.get(getProduct.selectProduct(scanner)).getPrice());
+
+        HarrysSalonMenu.Accounting(scanner);
+
+        /*
+        for (int i = 1; i < products.size(); i++) {
+            System.out.println(products.get(i).name);
+
+            System.out.println("vælg kunde, som skal havde product");
+            for (int e = 1; e < customers.size(); e++) {
+                System.out.println(customers.get(e - 1));
+            }
+
+            int væglNummerIArrylist = scanner.nextInt();
+            customers.get(væglNummerIArrylist);
+
+            int customerNumber = Customer.selectCustomer(scanner, customers);
+            Customer.customerNeedToPay(products.get(væglNummerIArrylist).getPrice() + customers.get(customerNumber).getBalance());
+          }
+         */
     }
 }
