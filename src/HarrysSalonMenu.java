@@ -12,14 +12,17 @@ public class HarrysSalonMenu {
         products = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         //Product cut = new Product("cut", 400);
+        /*
         Customer newCustomer = new Customer("Viktor", "52222222");
         Customer newCustomer2 = new Customer("Sebastian", "20503010");
         Customer newCustomer3 = new Customer("Tunahan", "30604020");
-        Customer newCustomer4 = new Customer("Lauritz", " 40705030");
+        Customer newCustomer4 = new Customer("Laurits", " 40705030");
         Customer newCustomer5 = new Customer("Martin", "50806040");
         customers.add(newCustomer);customers.add(newCustomer2);
         customers.add(newCustomer3);customers.add(newCustomer4);
         customers.add(newCustomer5);
+
+         */
 
         while (true) {
             displayMenu();
@@ -44,9 +47,8 @@ public class HarrysSalonMenu {
                     break;
                 case 6:
                     if (Password.password()){
-
                         Accounting(scanner);
-            }
+                    }
                     break;
                 case 7:
                     System.out.println("Exiting the program.");
@@ -147,13 +149,11 @@ public class HarrysSalonMenu {
                         int customerNumber1 = Customer.selectCustomer(scanner, customers);
                         System.out.println("How much does the customer need to pay: ");
                         double maengde = scanner.nextDouble();
-
                         customers.get(customerNumber1).customerNeedToPay(maengde);
                         System.out.println("The new balance is: ");
                         customers.get(customerNumber1);
                         customers.get(customerNumber1).printCustomerTransactions();
                         System.out.println();
-
                         break;
                     case 2:
                         System.out.println("Choose a customer: ");
@@ -169,7 +169,7 @@ public class HarrysSalonMenu {
                         //henter balancen for kunden
                         for (int i = 0; i < customers.size(); i++) {
                             System.out.println("The customers balance is: ");
-                            System.out.println(customers.get(i).getName() + customers.get(i).getBalance());
+                            System.out.println(customers.get(i).getName() +": "+ customers.get(i).getBalance());
                         }
                         break;
                     case 4:

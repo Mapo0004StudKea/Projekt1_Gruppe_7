@@ -2,11 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author Martin Poulsen, mapo0004@stud.kea.dk
+ * @author Sebastian Holger Drumm, sedr0001@stud.kea.dk
+ * @author Viktor Rasmussen, Vira0004@stud.kea.dk
+ * Info: Customer class to select, add and create customer.
+ */
+
 public class Customer {
     private final String name;
     private final String phoneNumber;
-    private static double balance;
+    private double balance;
     protected static ArrayList<Transaction> transactions = new ArrayList<>();
+
 
     public Customer(String name, String phoneNumber) {
         this.name = name;
@@ -74,7 +82,7 @@ public class Customer {
         }
     }
 
-    public static void customerNeedToPay(double amount) {
+    public void customerNeedToPay(double amount) {
         transactions.add(new Transaction("owes", amount, balance));
         balance = balance + amount;
     }

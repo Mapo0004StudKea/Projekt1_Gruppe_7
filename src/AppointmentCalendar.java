@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-public class AppointmentCalendar {
 
+public class AppointmentCalendar {
     public AppointmentCalendar() {
         Appointment.appointments = new ArrayList<>();
     }

@@ -48,12 +48,11 @@ public class Appointment {
             }
         } else if (!customers.isEmpty()) {
             int customerNumber = Customer.selectCustomer(scanner, customers);
-
             if (customerNumber != -1)
             {
                 Customer selectedCustomer = customers.get(customerNumber);
                 String appointmentInfo = "Customer: " + selectedCustomer.getName() + ", " + details;
-                Customer.customerNeedToPay(cut.getPrice());
+                //Customer.customerNeedToPay(cut.getPrice());
                 AppointmentCalendar.createAppointment(selectedTimeSlot, appointmentInfo);
                 System.out.println("Appointment created for " + selectedTimeSlot);
             } else {
@@ -76,7 +75,6 @@ public class Appointment {
             System.out.println("No appointments available to cancel.");
             return;
         }
-
         System.out.println("Select an appointment to cancel:");
         for (int i = 0; i < appointments.size(); i++) {
             System.out.println((i + 1) + ". " + appointments.get(i));
@@ -89,7 +87,6 @@ public class Appointment {
             System.out.println("Invalid appointment selection.");
             return;
         }
-
         String appointmentToCancel = appointments.get(appointmentNumber - 1);
         deleteAppointment(appointmentToCancel);
         System.out.println("Appointment canceled: " + appointmentToCancel);
