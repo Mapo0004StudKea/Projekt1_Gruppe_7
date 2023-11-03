@@ -14,7 +14,7 @@ public class Customer {
     private final String phoneNumber;
     private double balance;
     protected static ArrayList<Transaction> transactions = new ArrayList<>();
-    static ArrayList <Product> products  = new ArrayList<Product>();
+    static ArrayList<Product> products = new ArrayList<Product>();
 
 
     public Customer(String name, String phoneNumber) {
@@ -36,7 +36,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "name " + getName() + " number "+ getPhoneNumber();
+        return "name " + getName() + " number " + getPhoneNumber();
     }
 
     public static boolean createCustomerOption(Scanner scanner) {
@@ -73,7 +73,7 @@ public class Customer {
         System.out.println("Customers:");
         for (int i = 0; i < customers.size(); i++) {
             Customer customer = customers.get(i);
-            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber()+" balance " +customer.balance);
+            System.out.println((i + 1) + ". Name: " + customer.getName() + ", Phone: " + customer.getPhoneNumber() + " balance " + customer.balance);
         }
     }
 
@@ -86,16 +86,15 @@ public class Customer {
         transactions.add(new Transaction("paid", amount, balance));
         balance = balance - amount;
         ArrayList<Double> list = new ArrayList<>();
-        //lav en ekstra array list som gemmer amount, som man så kan regne samme senere.
-        double amountPaid=0;
+        double amountPaid = 0;
         System.out.println(amountPaid);
         list.add(amountPaid);
     }
 
-    public void printCustomerTransactions(){
+    public void printCustomerTransactions() {
         System.out.println(this);
-        System.out.println("text"+"\t"+"dato"+"\t"+"owes");
-        for ( Transaction t : transactions){
+        System.out.println("text" + "\t" + "dato" + "\t" + "owes");
+        for (Transaction t : transactions) {
             System.out.println(t);
         }
         System.out.println();
@@ -103,13 +102,51 @@ public class Customer {
 
     public static void register(List<Customer> customers, String name, double price) {
         Product getProduct = new Product(name, price);
-
+        int op1 = 0;
         Scanner scanner = new Scanner(System.in);
-        getProduct.makeProduct(scanner);
 
+        if (products.isEmpty()) {
+            products.add(getProduct.makeProduct(scanner));
+        } else {
+            System.out.println("Will you add a new product?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            int op2 = scanner.nextInt();
+            if (op2 == 1) {
+                products.add(getProduct.makeProduct(scanner));
+            }
+        }
+        if (!products.isEmpty()) {
+            System.out.println("Select a customer:");
+            for (int i = 0; i < customers.size(); i++) {
+                System.out.println((i + 1) + ". " + customers.get(i).getName());
+            }
+            System.out.print("Enter the customer number: ");
+            int customerNumber = scanner.nextInt();
+            scanner.nextLine();
+
+            Customer selectedCustomer = customers.get(customerNumber - 1);
+
+            System.out.println("Select a product:");
+            for (int i = 0; i < products.size(); i++) {
+                System.out.println((i + 1) + ". " + products.get(i).getName() + " " + products.get(i).getPrice() + "kr.");
+            }
+            op1 = scanner.nextInt();
+
+            if (op1 >= 1 && op1 <= products.size()) {
+                Product selectedProduct = products.get(op1 - 1);
+                double productPrice = selectedProduct.getPrice();
+
+                selectedCustomer.customerNeedToPay(productPrice);
+            } else {
+                System.out.println("Invalid product selection.");
+            }
+        } else System.out.println("Invalid choice.");
+
+/*
         System.out.println("vælg et product");
         if (products == null) {
-            getProduct.selectProduct( scanner);
+            getProduct.selectProduct(scanner);
         }
         System.out.println("Select a customer:");
         for (int i = 0; i < customers.size(); i++) {
@@ -119,7 +156,7 @@ public class Customer {
         int customerNumber = scanner.nextInt();
         scanner.nextLine();
 
-        customerNeedToPay(products.get(getProduct.selectProduct(scanner)).getPrice());
+       // customerNeedToPay(products.get(getProduct.selectProduct(scanner)).getPrice());
 
         HarrysSalonMenu.Accounting(scanner);
 

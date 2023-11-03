@@ -50,13 +50,13 @@ public class HarrysSalonMenu {
                             Accounting(scanner);
                         }
                         break;
-                    case 7:
+                    case 8:
                         System.out.println("Exiting the program.");
                         scanner.close();
                         System.exit(0);
                         break;
-                    case 8:
-                        Customer.register(customers," ",0 );
+                    case 7:
+                        Customer.register(customers, " ", 0);
                         break;
                     default:
                         System.out.println("Error: invalid choice.");
@@ -78,7 +78,8 @@ public class HarrysSalonMenu {
         System.out.println("4. View Appointments");
         System.out.println("5. Cancel Appointment");
         System.out.println("6. Accounting");
-        System.out.println("7. Exit");
+        System.out.println("7. Make and add a product");
+        System.out.println("8. Exit");
         System.out.print("Please enter your choice: ");
 
     }

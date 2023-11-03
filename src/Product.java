@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Product {
     private static List<Customer> customers;
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
     String name;
@@ -31,13 +31,13 @@ public class Product {
         customers.add(newCustomer3);customers.add(newCustomer4);
         customers.add(newCustomer5);
         Scanner scanner = new Scanner(System.in);
-     //   makeProduct(scanner);
+        //   makeProduct(scanner);
         // register(customers);
     }
 
-    public void makeProduct(Scanner scanner) {
+    public Product makeProduct(Scanner scanner) {
         System.out.println("Skriv produktets navn: ");
-        String name = scanner.nextLine();
+        String name = scanner.next();
         System.out.println("Indtast hvad produktet koster");
         double cost = scanner.nextDouble();
         Product newProduct = new Product(name, cost);
@@ -45,10 +45,11 @@ public class Product {
         //Product cut = new Product("cut", 400);
         //products.add(cut);
 
-        System.out.println("Dine produkter:");
+        /*System.out.println("Dine produkter:");
         for (int i = 0; i < products.size(); i++) {
             System.out.println(products.get(i).getName() + " " + products.get(i).getPrice());
-        }
+        }*/
+        return newProduct;
     }
     public int selectProduct(Scanner scanner) {
         System.out.println("Select a prodcuct:");
